@@ -22,16 +22,24 @@ The goal is to create a collection of ready-to-use loaders built with Astro and 
 ## Component Template
 ```
 ---
-/* Add any necessary Astro frontmatter logic here */
+const author = "Gaurav Bhalerao"
+const github = "https://github.com/gaurav-bhalerao-107"
 ---
 
-<section class="flex items-center justify-center">
-    <div class="loader">
-        <!-- Your loader code goes here -->
-    </div>
+<section class="relative flex items-center justify-center h-full w-full">
+  <!-- Loader -->
+  <div class="loader h-full w-full flex justify-center items-center">
+    <!-- Your loader code goes here -->
+  </div>
+
+  <!-- Author Details -->
+  <div class="absolute bottom-0 right-0 text-right">
+    <h2 class="text-xs font-medium tracking-wider leading-3">{ author }</h2>
+    <a href={github} class="text-[10px] tracking-wider text-blue-500" target="_blank">GitHub Profile</a>
+  </div>
 </section>
 
-<style>
+<style scoped>
 /* Add any custom styles here if necessary */
 .loader {
     /* Custom styles for loader animation */
@@ -42,5 +50,55 @@ The goal is to create a collection of ready-to-use loaders built with Astro and 
   // Add your JavaScript for the loader if needed
   // This script will be scoped to this component
 </script>
+```
 
+## Component Example
+```
+---
+const author = "Gaurav Bhalerao"
+const github = "https://github.com/gaurav-bhalerao-107"
+---
+
+<section class="relative flex items-center justify-center h-full w-full">
+  <!-- Loader -->
+  <div class="loader h-full w-full flex justify-center items-center">
+    <div class="loading pacifico-regular" data-text="loading...">Loading...</div>
+  </div>
+
+  <!-- Author Details -->
+  <div class="absolute bottom-0 right-0 text-right">
+    <h2 class="text-xs font-medium tracking-wider leading-3">{ author }</h2>
+    <a href={github} class="text-[10px] tracking-wider text-blue-500" target="_blank">GitHub Profile</a>
+  </div>
+</section>
+
+<style scoped>
+.loader .loading {
+  position:absolute;
+  font-size:26px;
+  color:white;
+  text-transform:uppercase;
+  letter-spacing:5px;
+  border-bottom:16px solid white;
+}
+
+.loader .loading:before {
+  content: attr(data-text);
+  position:absolute;
+  color:cyan;
+  overflow:hidden;
+  border-bottom:16px solid cyan;
+  animation: slide 4.5s linear infinite;
+}
+
+@keyframes slide {
+  0% { width:0; }
+      
+  100%{ width:100%; }
+}
+</style>
+
+<script>
+  
+</script>
 ```
