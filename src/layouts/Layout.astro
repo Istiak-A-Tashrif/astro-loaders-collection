@@ -1,5 +1,8 @@
 ---
 const { title } = Astro.props;
+import { Image } from 'astro:assets';
+import Logo from "../assets/logo.svg";
+import Github from "../assets/github.svg";
 ---
 
 <!doctype html>
@@ -11,9 +14,28 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<!-- google font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<slot />
+		<nav class="bg-indigo-500">
+			<div class="mx-auto max-w-[1600px] px-2 sm:px-6 lg:px-8">
+			  <div class="relative flex h-16 items-center justify-between">
+				<div class="flex items-center">
+					<h1 class="text-3xl text-white tracking-widest font-bold pacifico-regular">Loaders</h1>
+				</div>
+				<a href="https://github.com/gaurav-bhalerao-107/astro-loaders-collection" target="_blank" class="flex items-center">
+					<Image class="h-8 w-auto" src={Github} alt="Github" />
+				</a>
+			  </div>
+			</div>
+		</nav>
+		<main class="bg-gray-800 mt-10">
+			<slot />
+		</main>
 	</body>
 </html>
 <style is:global>
@@ -30,7 +52,7 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: #1f2937;
 		color: #ffffff;
 	}
 	code {
@@ -43,5 +65,10 @@ const { title } = Astro.props;
 			Bitstream Vera Sans Mono,
 			Courier New,
 			monospace;
+	}
+	.pacifico-regular {
+		font-family: "Pacifico", cursive;
+		font-weight: 400;
+		font-style: normal;
 	}
 </style>
